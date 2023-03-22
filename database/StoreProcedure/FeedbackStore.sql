@@ -1,0 +1,99 @@
+DROP PROC IF EXISTS selFeedback
+GO
+CREATE PROC selFeedback
+@id INT
+AS
+BEGIN
+	SELECT * FROM FEEDBACK
+	WHERE ID = @id 
+END
+GO
+
+
+DROP PROC IF EXISTS selAllFeedback
+GO
+CREATE PROC selAllFeedback
+AS
+BEGIN
+	SELECT * FROM FEEDBACK 
+END
+GO
+--EXEC selAllBookmark
+
+
+
+DROP PROC IF EXISTS insertFeedback
+GO
+CREATE PROC insertFeedback
+@content NVARCHAR(200),
+@user_id INT
+AS
+BEGIN
+	INSERT INTO FEEDBACK 
+	VALUES (@content, @user_id)
+END
+GO
+
+
+
+DROP PROC IF EXISTS updateFeedback
+GO
+CREATE PROC updateFeedback
+@id INT,
+@content NVARCHAR(200),
+@user_id INT
+AS
+BEGIN
+	UPDATE FEEDBACK
+	SET CONTENT = @content, [USER_ID] = @user_id
+	WHERE ID = @id
+END
+GO
+
+
+
+DROP PROC IF EXISTS deleteFeedback
+GO
+CREATE PROC deleteFeedback
+@id INT
+AS
+BEGIN
+	DELETE FROM FEEDBACK
+	WHERE ID = @id
+END
+GO
+
+DROP PROC IF EXISTS countFeedback
+GO
+CREATE PROC countFeedback
+AS
+BEGIN
+	SELECT COUNT(ID) total FROM FEEDBACK
+END
+GO
+
+
+DROP PROC IF EXISTS selFeedbackByPages
+GO
+CREATE PROC selFeedbackByPages
+@PageNumber AS INT, @RowsOfPage AS INT
+AS
+BEGIN
+	SELECT * FROM FEEDBACK
+	ORDER BY ID DESC
+	OFFSET (@pageNumber - 1) * @RowsOfPage ROWS
+	FETCH NEXT @RowsOfPage ROWS ONLY
+END
+GO 
+
+
+DROP PROC IF EXISTS deleteFeedbackByUserId
+GO
+CREATE PROC deleteFeedbackByUserId
+@user_id INT
+AS
+BEGIN
+	DELETE FROM FEEDBACK
+	WHERE [USER_ID] = @user_id
+END
+GO

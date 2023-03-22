@@ -1,0 +1,75 @@
+DROP PROC IF EXISTS selPhonetic
+GO
+CREATE PROC selPhonetic
+@id INT
+AS
+BEGIN
+	SELECT * FROM PHONETIC
+	WHERE ID = @id 
+END
+GO
+
+
+DROP PROC IF EXISTS selAllPhonetic
+GO
+CREATE PROC selAllPhonetic
+AS
+BEGIN
+	SELECT * FROM PHONETIC 
+END
+GO
+--EXEC selAllBookmark
+
+
+
+DROP PROC IF EXISTS insertPhonetic
+GO
+CREATE PROC insertPhonetic
+@content NVARCHAR(200),
+@vocab_id INT
+AS
+BEGIN
+	INSERT INTO PHONETIC 
+	VALUES (@content, @vocab_id)
+END
+GO
+
+
+
+DROP PROC IF EXISTS updatePhonetic
+GO
+CREATE PROC updatePhonetic
+@id INT,
+@content NVARCHAR(200),
+@vocab_id INT
+AS
+BEGIN
+	UPDATE PHONETIC
+	SET CONTENT = @content, VOCABULARY_ID = @vocab_id
+	WHERE ID = @id
+END
+GO
+
+
+
+DROP PROC IF EXISTS deletePhonetic
+GO
+CREATE PROC deletePhonetic
+@id INT
+AS
+BEGIN
+	DELETE FROM PHONETIC
+	WHERE ID = @id
+END
+GO
+
+DROP PROC IF EXISTS selPhoneticByVocabId
+GO
+CREATE PROC selPhoneticByVocabId
+@vocab_id INT
+AS
+BEGIN
+	SELECT * FROM PHONETIC
+	WHERE VOCABULARY_ID = @vocab_id
+END
+GO

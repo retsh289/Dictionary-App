@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>java.project.semester2</groupId>
+		<artifactId>javaproject</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>dao</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>9.2.1.jre11</version>
+		</dependency>
+		<dependency>
+			<groupId>java.project.semester2</groupId>
+			<artifactId>persistence-data</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		  <groupId>java.project.semester2</groupId>
+          <artifactId>utils</artifactId>
+          <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>
